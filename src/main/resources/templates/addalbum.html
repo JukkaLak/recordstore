@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Albumlist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Add album</h1>
+	<div>
+		<form th:object="${album}" th:action="@{save}" action="#" method="post">
+		  	<label for="name">Name</label>
+			<input type="text" id="name" th:field="*{albumName}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="artist">Artist</label>
+			<input type="text" id="artist" th:field="*{artist}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="year">Year</label>
+			<input type="text" th:field="*{year}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="format">Format</label>
+			<input type="text" id="format" th:field="*{format}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="price">Price</label>
+			<input type="text" id="price" th:field="*{price}" />
+			<div style="clear: both; display: block; height: 10px;"></div>						
+		  	<label for="genre">Genre</label>
+			 <select id="genre" th:field="*{genre}" class="form-control">
+       			<option th:each="genre: ${genres}" th:value="${genre.genreId}" th:text="${genre.name}"></option>
+    		</select>
+			
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>
