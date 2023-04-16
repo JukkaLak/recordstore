@@ -24,22 +24,22 @@
 			<th>Name</th>
 		    <th>Artist</th>
 		    <th>Year</th>
-		    <th>Format</th>
 		    <th>Price</th>
 		    <th>Genre</th>
+		    <th>Format</th>
 		    <th sec:authorize="hasAuthority('ADMIN')"> </th>
 		</tr>  
     	<tr th:each = "album : ${albums}">
     		<td th:text="${album.albumName}"></td>
     		<td th:text="${album.artist}"></td>
     		<td th:text="${album.year}"></td>
-    		<td th:text="${album.format}"></td>
     		<td th:text="${album.price}"></td>
-    		<td th:text="${album.genre.name}"></td> 		
+    		<td th:text="${album.genre.name}"></td>
+    		<td th:text="${album.format.name}"></td> 		
  			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${album.id})}" class="btn btn-xs btn-danger">Delete</a></td>    		
     	</tr>
      </table>
-	 <a href="/add" class="btn btn-primary">Add album</a> 
+	 <td sec:authorize="hasAuthority('ADMIN')"><a href="/add" class="btn btn-primary">Add album</a></td>
 </div>   	
 </body>
 </html>

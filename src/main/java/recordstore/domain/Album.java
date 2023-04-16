@@ -8,7 +8,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+
 
 @Entity
 public class Album {
@@ -21,7 +24,6 @@ public class Album {
 	private String albumName;
 	@Column(name = "release year")
 	private int year;
-	private String format;
 	private double price;
 	
 	@ManyToOne
@@ -29,10 +31,15 @@ public class Album {
 	@JoinColumn(name = "genreId")
 	private Genre genre;
 	
+	@ManyToOne
+	@JsonIgnoreProperties(value = "albums")
+	@JoinColumn(name = "formatId")
+	private Format format;
+	
 	
 	public Album() {}
 	
-	public Album(String artist, String albumName, int year, String format, double price, Genre genre) {
+	public Album(String artist, String albumName, int year, Format format, double price, Genre genre) {
 		super();
 		this.artist = artist;
 		this.albumName = albumName;
@@ -74,11 +81,11 @@ public class Album {
 		this.year = year;
 	}
 
-	public String getFormat() {
+	public Format getFormat() {
 		return format;
 	}
 
-	public void setFormat(String format) {
+	public void setFormat(Format format) {
 		this.format = format;
 	}
 	public double getPrice() {
@@ -96,12 +103,11 @@ public class Album {
 
 	@Override
 	public String toString() {
-		if (this.genre != null)
-			return "Album [id=" + id + ", artist=" + artist + ", albumName=" + albumName + ", year=" + year + ", format="
-					+ format + ", price=" + price + ", genre=" + this.getGenre() + "]";
-		return "Album [id=" + id + ", artist=" + artist + ", albumName=" + albumName + ", year=" + year + ", format="
-				+ format + ", price=" + price +"]";
+		return "Album id=" + id + ", artist=" + artist + ", albumName=" + albumName + ", year=" + year + ", price="
+				+ price + ", genre=" + genre + ", format=" + format;
 	}
+
+	
 
 	
 	

@@ -10,30 +10,30 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 @Entity
-public class Genre {
+public class Format {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long genreId;
+	private Long formatId;
 	private String name;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "genre")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "format")
 	
 	private List<Album> albums;
 	
-	public Genre() {}
+	public Format() {}
 	
-	public Genre(String name) {
+	public Format(String name) {
 		super();
 		this.name = name;
 	}
 
-	public Long getGenreId() {
-		return genreId;
+	public Long getFormatId() {
+		return formatId;
 	}
 
-	public void setGenreId(Long genreId) {
-		this.genreId = genreId;
+	public void setFormatId(Long formatId) {
+		this.formatId = formatId;
 	}
 
 	public String getName() {
@@ -54,9 +54,8 @@ public class Genre {
 
 	@Override
 	public String toString() {
-		return "Genre [genreId=" + genreId + ", name=" + name + "]";
+		return "Format formatId=" + formatId + ", name=" + name;
 	}
-	
 	
 
 }

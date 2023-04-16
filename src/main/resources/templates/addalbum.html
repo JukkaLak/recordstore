@@ -17,8 +17,6 @@
 		  	<label for="year">Year</label>
 			<input type="text" th:field="*{year}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="format">Format</label>
-			<input type="text" id="format" th:field="*{format}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<label for="price">Price</label>
 			<input type="text" id="price" th:field="*{price}" />
@@ -26,6 +24,11 @@
 		  	<label for="genre">Genre</label>
 			 <select id="genre" th:field="*{genre}" class="form-control">
        			<option th:each="genre: ${genres}" th:value="${genre.genreId}" th:text="${genre.name}"></option>
+    		</select>
+    		<label for="format">Format</label>
+    		<select id="format" th:field="*{format}" class="form-control">
+    		<option th:each="format: ${formats}" th:value="${format.formatId}" th:text="${format.name}"></option>
+    		
     		</select>
 			
 			<div style="clear: both; display: block; height: 10px;"></div>
